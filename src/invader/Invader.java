@@ -24,6 +24,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Circle;
+import javafx.scene.Node;
+import javafx.geometry.Bounds;
 
 public class Invader extends Application {
 
@@ -72,11 +74,13 @@ int y=500;
 
         System.out.println(image.isError());
         
-       
+        Bala balapointer;
         new AnimationTimer() {
             @Override
             public void handle(long now) {
                 gc.clearRect(0, 0, 700, 600);
+                gc.setFill(Color.PURPLE);
+                
                 nave.dibujarNave(gc);
                  if (derecha) {
                     nave.moverDerecha(gc);
@@ -87,18 +91,33 @@ int y=500;
              
                 ArrayList<Bala> balas = nave.balas;
                    System.out.println(balas.size());
-                for(Bala bala : balas){
-                    bala.dibujarBala(gc);
-                    bala.moverBala();
-                    if (bala.posY>600) {
-                        balas.remove(bala);
-                    }
-                }
+              
+                   
+                 for (Bala bala : balas) {
+                     if (bala.valid) {     
+                     bala.dibujarBala(gc);
+                     bala.moverBala();
+                         
+                     }else{
+                         balas.remove(bala);
+                     }
+                     
+                 }
+                 
+                
+ 
                 
                 for(Marciano marciano:marcianos){
                     gc.drawImage(marciano.image,marciano.posX,marciano.posY);
                 }
                 
+                for (Bala bala : balas) {
+                    Rectangle r = bala.getBordes();
+                    for (Marciano marciano : marcianos) {
+                        Rectangle r2 = marciano.getBordes();
+                        
+                    }
+                }
                
 
             }
@@ -191,7 +210,7 @@ class Bala{
     int width =10;
     int speed =3;
     int height =15;
-    
+    boolean valid =true;
     
     public Bala(int x, int y) {
         this.posX=x;
@@ -206,9 +225,11 @@ class Bala{
     }
     
     public void moverBala(){
-        if (posY< 600) {
+        if (posY>10) {
             this.posY-=speed;
            
+        }else{
+            valid =false;
         }
         
        
