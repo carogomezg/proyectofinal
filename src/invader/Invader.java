@@ -6,26 +6,19 @@
 package invader;
 
 import com.sun.javafx.geom.Rectangle;
-import com.sun.org.apache.xpath.internal.operations.Gt;
+import com.sun.javafx.geom.Shape;
 import java.util.ArrayList;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Circle;
-import javafx.scene.Node;
-import javafx.geometry.Bounds;
+import javafx.geometry.Rectangle2D;
+
 
 public class Invader extends Application {
 
@@ -35,6 +28,39 @@ boolean izquierda=false;
 int x=40;
 int y=500;
 
+  Image image = new Image(getClass().getResource("rsz_juegoavion.png").toExternalForm());
+  Image marcianoVerde = new Image(getClass().getResource("rsz_marcianitoverde.png").toExternalForm());
+  
+  Image vida = new Image(getClass().getResource("rsz_vida.png").toExternalForm());
+
+
+    
+  
+ public void agregarMarcianos(ArrayList<Marciano> marcianos){
+        marcianos.add(new Marciano(70, 150, marcianoVerde));
+        marcianos.add(new Marciano(250, 150, marcianoVerde));
+        marcianos.add(new Marciano(150, 150, marcianoVerde));
+        
+        
+        marcianos.add(new Marciano(70,  200, marcianoVerde));
+        marcianos.add(new Marciano(250, 200, marcianoVerde));
+        marcianos.add(new Marciano(150, 200, marcianoVerde));
+        
+        
+        marcianos.add(new Marciano(70, 250, marcianoVerde));
+        marcianos.add(new Marciano(250, 250, marcianoVerde));
+        marcianos.add(new Marciano(150, 250, marcianoVerde));
+        
+        
+        marcianos.add(new Marciano(70,  300, marcianoVerde));
+        marcianos.add(new Marciano(250, 300, marcianoVerde));
+        marcianos.add(new Marciano(150, 300, marcianoVerde));
+        
+        
+        marcianos.add(new Marciano(70,  350, marcianoVerde));
+        marcianos.add(new Marciano(250, 350, marcianoVerde));
+        marcianos.add(new Marciano(150, 350, marcianoVerde));   
+}
     
     @Override
     public void start(Stage primaryStage) {
@@ -44,13 +70,17 @@ int y=500;
         Canvas canvas = new Canvas(700,600);
         root.getChildren().add(canvas);
         Scene scene = new Scene(root);
-        Image image = new Image(getClass().getResource("rsz_juegoavion.png").toExternalForm());
-        Image marcianoVerde = new Image(getClass().getResource("rsz_marcianitoverde.png").toExternalForm());
-        
+        canvas.setOpacity(1);
+      
         ArrayList<Marciano> marcianos = new ArrayList<>();
-        marcianos.add(new Marciano(40, 50, marcianoVerde));
-        
-        
+                agregarMarcianos(marcianos);
+   
+            ArrayList<Vida> vidas = new ArrayList<>();
+            vidas.add(new Vida(200, 50, vida));
+             vidas.add(new Vida(350, 50, vida));
+              vidas.add(new Vida(300, 50, vida));
+               vidas.add(new Vida(250, 50, vida));
+                
         Nave nave = new Nave(x, y, image); 
         scene.setOnKeyPressed(e->{
         switch(e.getCode()){
@@ -74,6 +104,9 @@ int y=500;
 
         System.out.println(image.isError());
         
+        
+        ArrayList<Bala> balas = nave.balas;
+        
         Bala balapointer;
         new AnimationTimer() {
             @Override
@@ -89,35 +122,35 @@ int y=500;
                     nave.moverIzquierda(gc);
                 }
              
-                ArrayList<Bala> balas = nave.balas;
-                   System.out.println(balas.size());
-              
-                   
-                 for (Bala bala : balas) {
-                     if (bala.valid) {     
-                     bala.dibujarBala(gc);
-                     bala.moverBala();
-                         
-                     }else{
-                         balas.remove(bala);
-                     }
-                     
-                 }
-                 
-                
- 
+                  
                 
                 for(Marciano marciano:marcianos){
                     gc.drawImage(marciano.image,marciano.posX,marciano.posY);
                 }
-                
-                for (Bala bala : balas) {
-                    Rectangle r = bala.getBordes();
-                    for (Marciano marciano : marcianos) {
-                        Rectangle r2 = marciano.getBordes();
-                        
-                    }
+                       
+                 for (Bala bala : balas) {
+                     if (bala.valid) {     
+                     bala.dibujarBala(gc);
+                     bala.moverBala();
+                         System.out.println(balas.size());
+                     }else{
+                         balas.remove(bala);
+                     System.out.println(balas.size());
+
+                     }
+                     
+                 }
+                 
+                 gc.strokeText("Score", 100, 70);
+                 for (Vida vida : vidas) {
+                    gc.drawImage(vida.image, vida.posX, vida.posY);
                 }
+                 
+                 
+                 
+                
+ 
+           
                
 
             }
@@ -134,6 +167,21 @@ int y=500;
     public static void main(String[] args) {
         launch(args);
     }
+    
+}
+
+class Vida{
+    int posX;
+    int posY;
+    
+    Image image;
+
+    public Vida(int posX, int posY, Image image) {
+        this.posX = posX;
+        this.posY = posY;
+        this.image = image;
+    }
+    
     
 }
 
@@ -184,17 +232,16 @@ class Marciano{
     
     int posX;
     int posY;
-    int width;
-    int height;
+    static int width;
+   static int height;
     Image image;
-    
-    public Marciano(int X, int Y,Image image) {
-        this.posX = X;
-        this.posY = Y;
-        this.image =image;
-        height= (int)image.getHeight();
-        width= (int)image.getWidth();
+
+    public Marciano(int x, int y,Image image) {
+       posX=x;
+       posY=y;
+        this.image=image;
     }
+    
     
     public Rectangle getBordes(){
          return new Rectangle(posX, posY, width, height);
@@ -207,16 +254,17 @@ class Bala{
 
     int posX;
     int posY;
-    int width =10;
+    static int width =10;
     int speed =3;
-    int height =15;
+   static int height =15;
     boolean valid =true;
-    
-    public Bala(int x, int y) {
-        this.posX=x;
-        this.posY =y+3;
-      
+
+    public Bala(int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
     }
+    
+    
     
     public  void dibujarBala(GraphicsContext gc){
         gc.setFill(Color.BLUE);
@@ -235,8 +283,8 @@ class Bala{
        
     }
     
-    public Rectangle getBordes(){
-         return new Rectangle(posX, posY, width, height);
-     }
+   // public Rectangle getBordes(){
+     //    return new Rectangle(posX, posY, width, height);
+     //}
     
 }
