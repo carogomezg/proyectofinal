@@ -18,6 +18,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.geometry.Rectangle2D;
+import javax.swing.text.html.CSS;
 
 
 public class Invader extends Application {
@@ -101,7 +102,7 @@ int y=500;
         
         
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
+        
         System.out.println(image.isError());
         
         
@@ -112,7 +113,7 @@ int y=500;
             @Override
             public void handle(long now) {
                 gc.clearRect(0, 0, 700, 600);
-                gc.setFill(Color.PURPLE);
+                
                 
                 nave.dibujarNave(gc);
                  if (derecha) {
