@@ -103,12 +103,11 @@ int y=500;
         
         GraphicsContext gc = canvas.getGraphicsContext2D();
         
-        System.out.println(image.isError());
+        //System.out.println(image.isError());
         
         
-        ArrayList<Bala> balas = nave.balas;
+       
         
-        Bala balapointer;
         new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -128,12 +127,12 @@ int y=500;
                 for(Marciano marciano:marcianos){
                     gc.drawImage(marciano.image,marciano.posX,marciano.posY);
                 }
-                       
-                 for (Bala bala : balas) {
+                  ArrayList<Bala> balas = nave.balas;      
+                 
+                  for (Bala bala : balas) {
                      if (bala.valid) {     
                      bala.dibujarBala(gc);
                      bala.moverBala();
-                         System.out.println(balas.size());
                      }else{
                          balas.remove(bala);
                      System.out.println(balas.size());
@@ -141,6 +140,16 @@ int y=500;
                      }
                      
                  }
+                 for (Bala bala : balas) {
+                     for (Marciano marciano : marcianos) {
+                         if (marciano.getBordes().contains(bala.posX,bala.posY)) {
+                             
+                             marcianos.remove(marciano);
+                             System.out.println("collision");
+                         }
+                     }
+                }
+               
                  
                  gc.strokeText("Score", 100, 70);
                  for (Vida vida : vidas) {
@@ -233,8 +242,8 @@ class Marciano{
     
     int posX;
     int posY;
-    static int width;
-   static int height;
+    static int width =30;
+   static int height=30;
     Image image;
 
     public Marciano(int x, int y,Image image) {
@@ -247,6 +256,7 @@ class Marciano{
     public Rectangle getBordes(){
          return new Rectangle(posX, posY, width, height);
      }
+    
 
 }
 
@@ -255,11 +265,12 @@ class Bala{
 
     int posX;
     int posY;
-    static int width =10;
+    static int width =2;
     int speed =3;
-   static int height =15;
+   static int height =2;
     boolean valid =true;
 
+   
     public Bala(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
@@ -280,12 +291,12 @@ class Bala{
         }else{
             valid =false;
         }
-        
-       
     }
     
-   // public Rectangle getBordes(){
-     //    return new Rectangle(posX, posY, width, height);
-     //}
+    
+    
+    public Rectangle getBordes(){
+         return new Rectangle(posX, posY, width, height);
+     }
     
 }
