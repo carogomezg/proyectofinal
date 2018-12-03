@@ -35,7 +35,7 @@ import javax.swing.text.html.CSS;
 
 public class Invader extends Application {
 
-    
+    static int n=0;
 boolean derecha = false;
 boolean izquierda=false;
 int x=40;
@@ -50,137 +50,132 @@ int y=500;
   Image marcianoVerde = new Image(getClass().getResource("rsz_marcianitoverde.png").toExternalForm());
   Image vida = new Image(getClass().getResource("rsz_vida.png").toExternalForm());
   
-  
-       
-
 
  public void agregarMarcianos(ArrayList<Marciano> marcianos){
      
-        marcianos.add(new Marciano(72, 185, marcianoAmarillo));
-        marcianos.add(new Marciano(104, 185, marcianoAmarillo));
-        marcianos.add(new Marciano(140, 185, marcianoAmarillo));
-        marcianos.add(new Marciano(72, 221, marcianoAmarillo));
-        marcianos.add(new Marciano(104, 221, marcianoAmarillo));
-        marcianos.add(new Marciano(140, 221, marcianoAmarillo));
-        marcianos.add(new Marciano(72, 257, marcianoAmarillo));
-        marcianos.add(new Marciano(104, 257, marcianoAmarillo));
-        marcianos.add(new Marciano(140, 257, marcianoAmarillo));
-        marcianos.add(new Marciano(72, 293, marcianoAmarillo));
-        marcianos.add(new Marciano(104, 293, marcianoAmarillo));
-        marcianos.add(new Marciano(140, 293, marcianoAmarillo));
-        marcianos.add(new Marciano(72, 329, marcianoAmarillo));
-        marcianos.add(new Marciano(104, 329, marcianoAmarillo));
-        marcianos.add(new Marciano(140, 329, marcianoAmarillo));
-        marcianos.add(new Marciano(72, 365, marcianoAmarillo));
-        marcianos.add(new Marciano(104, 365, marcianoAmarillo));
-        marcianos.add(new Marciano(140, 365, marcianoAmarillo));
-        marcianos.add(new Marciano(72, 401, marcianoAmarillo));
-        marcianos.add(new Marciano(104, 401, marcianoAmarillo));
-        marcianos.add(new Marciano(140, 401, marcianoAmarillo));
+        marcianos.add(new Marciano(72, 150, marcianoAmarillo));
+        marcianos.add(new Marciano(104, 150, marcianoAmarillo));
+        marcianos.add(new Marciano(140, 150, marcianoAmarillo));
+        marcianos.add(new Marciano(72, 186, marcianoAmarillo));
+        marcianos.add(new Marciano(104, 186, marcianoAmarillo));
+        marcianos.add(new Marciano(140, 186, marcianoAmarillo));
+        marcianos.add(new Marciano(72, 222, marcianoAmarillo));
+        marcianos.add(new Marciano(104, 222, marcianoAmarillo));
+        marcianos.add(new Marciano(140, 222, marcianoAmarillo));
+        marcianos.add(new Marciano(72, 258, marcianoAmarillo));
+        marcianos.add(new Marciano(104, 258, marcianoAmarillo));
+        marcianos.add(new Marciano(140, 258, marcianoAmarillo));
+        marcianos.add(new Marciano(72, 294, marcianoAmarillo));
+        marcianos.add(new Marciano(104, 294, marcianoAmarillo));
+        marcianos.add(new Marciano(140, 294, marcianoAmarillo));
+        marcianos.add(new Marciano(72, 330, marcianoAmarillo));
+        marcianos.add(new Marciano(104, 330, marcianoAmarillo));
+        marcianos.add(new Marciano(140, 330, marcianoAmarillo));
+        marcianos.add(new Marciano(72, 366, marcianoAmarillo));
+        marcianos.add(new Marciano(104, 366, marcianoAmarillo));
+        marcianos.add(new Marciano(140, 366, marcianoAmarillo));
         
         
-        marcianos.add(new Marciano(220, 185, marcianoRosa));
-        marcianos.add(new Marciano(252, 185, marcianoRosa));
-        marcianos.add(new Marciano(283, 185, marcianoRosa));
-        marcianos.add(new Marciano(220, 221, marcianoRosa));
-        marcianos.add(new Marciano(252, 221, marcianoRosa));
-        marcianos.add(new Marciano(283, 221, marcianoRosa));
-        marcianos.add(new Marciano(220, 257, marcianoRosa));
-        marcianos.add(new Marciano(252, 257, marcianoRosa));
-        marcianos.add(new Marciano(283, 257, marcianoRosa));
-        marcianos.add(new Marciano(220, 293, marcianoRosa));
-        marcianos.add(new Marciano(252, 293, marcianoRosa));
-        marcianos.add(new Marciano(283, 293, marcianoRosa));
-        marcianos.add(new Marciano(220, 329, marcianoRosa));
-        marcianos.add(new Marciano(252, 329, marcianoRosa));
-        marcianos.add(new Marciano(283, 329, marcianoRosa));
-        marcianos.add(new Marciano(220, 365, marcianoRosa));
-        marcianos.add(new Marciano(252, 365, marcianoRosa));
-        marcianos.add(new Marciano(283, 365, marcianoRosa));
-        marcianos.add(new Marciano(220, 401, marcianoRosa));
-        marcianos.add(new Marciano(252, 401, marcianoRosa));
-        marcianos.add(new Marciano(283, 401, marcianoRosa));
+        marcianos.add(new Marciano(220, 150, marcianoRosa));
+        marcianos.add(new Marciano(252, 150, marcianoRosa));
+        marcianos.add(new Marciano(283, 150, marcianoRosa));
+        marcianos.add(new Marciano(220, 186, marcianoRosa));
+        marcianos.add(new Marciano(252, 186, marcianoRosa));
+        marcianos.add(new Marciano(283, 186, marcianoRosa));
+        marcianos.add(new Marciano(220, 222, marcianoRosa));
+        marcianos.add(new Marciano(252, 222, marcianoRosa));
+        marcianos.add(new Marciano(283, 222, marcianoRosa));
+        marcianos.add(new Marciano(220, 258, marcianoRosa));
+        marcianos.add(new Marciano(252, 258, marcianoRosa));
+        marcianos.add(new Marciano(283, 258, marcianoRosa));
+        marcianos.add(new Marciano(220, 294, marcianoRosa));
+        marcianos.add(new Marciano(252, 294, marcianoRosa));
+        marcianos.add(new Marciano(283, 294, marcianoRosa));
+        marcianos.add(new Marciano(220, 330, marcianoRosa));
+        marcianos.add(new Marciano(252, 330, marcianoRosa));
+        marcianos.add(new Marciano(283, 330, marcianoRosa));
+        marcianos.add(new Marciano(220, 366, marcianoRosa));
+        marcianos.add(new Marciano(252, 366, marcianoRosa));
+        marcianos.add(new Marciano(283, 366, marcianoRosa));
         
         
-        marcianos.add(new Marciano(359, 185, marcianoAzul));
-        marcianos.add(new Marciano(395, 185, marcianoAzul));
-        marcianos.add(new Marciano(431, 183, marcianoAzul));
-        marcianos.add(new Marciano(359, 221, marcianoAzul));
-        marcianos.add(new Marciano(395, 221, marcianoAzul));
-        marcianos.add(new Marciano(431, 221, marcianoAzul));
-        marcianos.add(new Marciano(359, 257, marcianoAzul));
-        marcianos.add(new Marciano(395, 257, marcianoAzul));
-        marcianos.add(new Marciano(431, 257, marcianoAzul));
-        marcianos.add(new Marciano(359, 293, marcianoAzul));
-        marcianos.add(new Marciano(395, 293, marcianoAzul));
-        marcianos.add(new Marciano(431, 293, marcianoAzul));
-        marcianos.add(new Marciano(359, 329, marcianoAzul));
-        marcianos.add(new Marciano(395, 329, marcianoAzul));
-        marcianos.add(new Marciano(431, 329, marcianoAzul));
-        marcianos.add(new Marciano(359, 365, marcianoAzul));
-        marcianos.add(new Marciano(395, 365, marcianoAzul));
-        marcianos.add(new Marciano(431, 365, marcianoAzul));
-        marcianos.add(new Marciano(359, 401, marcianoAzul));
-        marcianos.add(new Marciano(395, 401, marcianoAzul));
-        marcianos.add(new Marciano(431, 401, marcianoAzul));
+        marcianos.add(new Marciano(359, 150, marcianoAzul));
+        marcianos.add(new Marciano(395, 150, marcianoAzul));
+        marcianos.add(new Marciano(431, 150, marcianoAzul));
+        marcianos.add(new Marciano(359, 186, marcianoAzul));
+        marcianos.add(new Marciano(395, 186, marcianoAzul));
+        marcianos.add(new Marciano(431, 186, marcianoAzul));
+        marcianos.add(new Marciano(359, 222, marcianoAzul));
+        marcianos.add(new Marciano(395, 222, marcianoAzul));
+        marcianos.add(new Marciano(431, 222, marcianoAzul));
+        marcianos.add(new Marciano(359, 258, marcianoAzul));
+        marcianos.add(new Marciano(395, 258, marcianoAzul));
+        marcianos.add(new Marciano(431, 258, marcianoAzul));
+        marcianos.add(new Marciano(359, 294, marcianoAzul));
+        marcianos.add(new Marciano(395, 294, marcianoAzul));
+        marcianos.add(new Marciano(431, 294, marcianoAzul));
+        marcianos.add(new Marciano(359, 330, marcianoAzul));
+        marcianos.add(new Marciano(395, 330, marcianoAzul));
+        marcianos.add(new Marciano(431, 330, marcianoAzul));
+        marcianos.add(new Marciano(359, 366, marcianoAzul));
+        marcianos.add(new Marciano(395, 366, marcianoAzul));
+        marcianos.add(new Marciano(431, 366, marcianoAzul));
         
         
-        marcianos.add(new Marciano(513, 185, marcianoRojo));
-        marcianos.add(new Marciano(549, 185, marcianoRojo));
-        marcianos.add(new Marciano(585, 185, marcianoRojo));
-        marcianos.add(new Marciano(513, 221, marcianoRojo));
-        marcianos.add(new Marciano(549, 221, marcianoRojo));
-        marcianos.add(new Marciano(585, 221, marcianoRojo));
-        marcianos.add(new Marciano(513, 257, marcianoRojo));
-        marcianos.add(new Marciano(549, 257, marcianoRojo));
-        marcianos.add(new Marciano(585, 257, marcianoRojo));
-        marcianos.add(new Marciano(513, 293, marcianoRojo));
-        marcianos.add(new Marciano(549, 293, marcianoRojo));
-        marcianos.add(new Marciano(585, 293, marcianoRojo));
-        marcianos.add(new Marciano(513, 329, marcianoRojo));
-        marcianos.add(new Marciano(549, 329, marcianoRojo));
-        marcianos.add(new Marciano(585, 329, marcianoRojo));
-        marcianos.add(new Marciano(513, 365, marcianoRojo));
-        marcianos.add(new Marciano(549, 365, marcianoRojo));
-        marcianos.add(new Marciano(585, 365, marcianoRojo));
-        marcianos.add(new Marciano(513, 401, marcianoRojo));
-        marcianos.add(new Marciano(549, 401, marcianoRojo));
-        marcianos.add(new Marciano(585, 401, marcianoRojo));
+        marcianos.add(new Marciano(513, 150, marcianoRojo));
+        marcianos.add(new Marciano(549, 150, marcianoRojo));
+        marcianos.add(new Marciano(585, 150, marcianoRojo));
+        marcianos.add(new Marciano(513, 186, marcianoRojo));
+        marcianos.add(new Marciano(549, 186, marcianoRojo));
+        marcianos.add(new Marciano(585, 186, marcianoRojo));
+        marcianos.add(new Marciano(513, 222, marcianoRojo));
+        marcianos.add(new Marciano(549, 222, marcianoRojo));
+        marcianos.add(new Marciano(585, 222, marcianoRojo));
+        marcianos.add(new Marciano(513, 258, marcianoRojo));
+        marcianos.add(new Marciano(549, 258, marcianoRojo));
+        marcianos.add(new Marciano(585, 258, marcianoRojo));
+        marcianos.add(new Marciano(513, 294, marcianoRojo));
+        marcianos.add(new Marciano(549, 294, marcianoRojo));
+        marcianos.add(new Marciano(585, 294, marcianoRojo));
+        marcianos.add(new Marciano(513, 330, marcianoRojo));
+        marcianos.add(new Marciano(549, 330, marcianoRojo));
+        marcianos.add(new Marciano(585, 330, marcianoRojo));
+        marcianos.add(new Marciano(513, 366, marcianoRojo));
+        marcianos.add(new Marciano(549, 366, marcianoRojo));
+        marcianos.add(new Marciano(585, 366, marcianoRojo));
        
         
-        marcianos.add(new Marciano(665, 185, marcianoVerde));
-        marcianos.add(new Marciano(701, 185, marcianoVerde));
-        marcianos.add(new Marciano(737, 185, marcianoVerde));
-        marcianos.add(new Marciano(665, 221, marcianoVerde));
-        marcianos.add(new Marciano(701, 221, marcianoVerde));
-        marcianos.add(new Marciano(737, 221, marcianoVerde));
-        marcianos.add(new Marciano(665, 257, marcianoVerde));
-        marcianos.add(new Marciano(701, 257, marcianoVerde));
-        marcianos.add(new Marciano(737, 257, marcianoVerde));
-        marcianos.add(new Marciano(665, 293, marcianoVerde));
-        marcianos.add(new Marciano(701, 293, marcianoVerde));
-        marcianos.add(new Marciano(737, 293, marcianoVerde));
-        marcianos.add(new Marciano(665, 329, marcianoVerde));
-        marcianos.add(new Marciano(701, 329, marcianoVerde));
-        marcianos.add(new Marciano(737, 329, marcianoVerde));
-        marcianos.add(new Marciano(665, 365, marcianoVerde));
-        marcianos.add(new Marciano(701, 365, marcianoVerde));
-        marcianos.add(new Marciano(737, 365, marcianoVerde));
-        marcianos.add(new Marciano(665, 401, marcianoVerde));
-        marcianos.add(new Marciano(701, 401, marcianoVerde));
-        marcianos.add(new Marciano(737, 401, marcianoVerde));
+        marcianos.add(new Marciano(665, 150, marcianoVerde));
+        marcianos.add(new Marciano(701, 150, marcianoVerde));
+        marcianos.add(new Marciano(737, 150, marcianoVerde));
+        marcianos.add(new Marciano(665, 186, marcianoVerde));
+        marcianos.add(new Marciano(701, 186, marcianoVerde));
+        marcianos.add(new Marciano(737, 186, marcianoVerde));
+        marcianos.add(new Marciano(665, 222, marcianoVerde));
+        marcianos.add(new Marciano(701, 222, marcianoVerde));
+        marcianos.add(new Marciano(737, 222, marcianoVerde));
+        marcianos.add(new Marciano(665, 258, marcianoVerde));
+        marcianos.add(new Marciano(701, 258, marcianoVerde));
+        marcianos.add(new Marciano(737, 258, marcianoVerde));
+        marcianos.add(new Marciano(665, 294, marcianoVerde));
+        marcianos.add(new Marciano(701, 294, marcianoVerde));
+        marcianos.add(new Marciano(737, 294, marcianoVerde));
+        marcianos.add(new Marciano(665, 330, marcianoVerde));
+        marcianos.add(new Marciano(701, 330, marcianoVerde));
+        marcianos.add(new Marciano(737, 330, marcianoVerde));
+        marcianos.add(new Marciano(665, 366, marcianoVerde));
+        marcianos.add(new Marciano(701, 366, marcianoVerde));
+        marcianos.add(new Marciano(737, 366, marcianoVerde));
         
         
-         
 }
- 
  public void NuevoJuego(Stage stage){
      
         StackPane root = new StackPane();
         root.setId("pane"); 
         
  
-        Canvas canvas = new Canvas(900,700);
+        Canvas canvas = new Canvas(800,600);
         root.getChildren().add(canvas);
         Scene scene = new Scene(root);
         canvas.setOpacity(1);
@@ -213,8 +208,10 @@ int y=500;
               vidas.add(new Vida(650, 23, vida));
                vidas.add(new Vida(680, 23, vida));
                 vidas.add(new Vida(710, 23, vida));
+     
+    
                 
-        Nave nave = new Nave(400, 570, avion); 
+        Nave nave = new Nave(400, 500, avion); 
         scene.setOnKeyPressed(e->{
         switch(e.getCode()){
             //case SPACE: disparar();
@@ -259,7 +256,9 @@ int y=500;
                 
                 for(Marciano marciano:marcianos){
                     gc.drawImage(marciano.image,marciano.posX,marciano.posY);
+                    marciano.moverMarciano(n);
                 }
+                n++;
                   ArrayList<Bala> balas = nave.balas;      
                  
                   for (Bala bala : balas) {
@@ -299,7 +298,6 @@ int y=500;
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-         primaryStage.setTitle("Forma de Pago");
         primaryStage.setMinHeight(500);
         primaryStage.setMinWidth(400);
         
@@ -373,9 +371,10 @@ class Vida{
         this.posX = posX;
         this.posY = posY;
         this.image = image;
+        
+       
     }
-    
-    
+   
 }
 
 class Nave {
@@ -428,12 +427,24 @@ class Nave {
 }
 
 class Marciano{
-    
+    double speed=1;
     int posX;
     int posY;
     static int width =30;
    static int height=30;
     Image image;
+    
+    public void moverMarciano(int n){
+          
+           if (n%50==0) {//cambia el 125 por si quieres cambiar los limites
+             speed= -speed;
+             this.posY+=3; 
+         
+              
+           }
+           this.posX+=speed;
+  
+            }
 
     public Marciano(int x, int y,Image image) {
        posX=x;
